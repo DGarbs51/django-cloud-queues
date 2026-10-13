@@ -24,7 +24,7 @@ from pathlib import Path
 
 from demo.views import LOG_TEST_LEVELS, LOG_TEST_UNICODE
 
-APP = "TODO"  # this app's Cloud id, once the lead creates it
+APP = "app-a2f7e0fe-d49c-492f-8a83-bc014f242cb1"  # this app's Cloud id, once the lead creates it
 # Cloudflare's browser integrity check rejects Python's default user agent with 403.
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 # Cloud's level for each case /api/log-test logs. The library sends Monolog's eight levels, but Cloud's log
