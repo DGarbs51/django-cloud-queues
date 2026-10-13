@@ -1,6 +1,9 @@
 .venv/
+.venv-3.11/
 __pycache__/
 .env
 results/
 .cloud/
 logging.json
+# collectstatic's output (STATIC_ROOT); the sources are demo/static/
+public/static/
