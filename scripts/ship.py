@@ -16,7 +16,7 @@ import sys
 import tempfile
 import time
 
-APP = "TODO"  # this app's Cloud id, once the lead creates it
+APP = "app-a2f7e0fe-d49c-492f-8a83-bc014f242cb1"  # this app's Cloud id, once the lead creates it
 FINISHED = ("deployment.succeeded", "deployment.failed", "build.failed", "deployment.cancelled")
 
 
