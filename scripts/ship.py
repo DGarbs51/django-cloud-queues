@@ -16,7 +16,7 @@ import sys
 import tempfile
 import time
 
-APP = "TODO"  # this app's Cloud id, once the lead creates it
+APP = "app-a2f7e0fe-d49c-492f-8a83-bc014f242cb1"  # this app's Cloud id, once the lead creates it
 FINISHED = ("deployment.succeeded", "deployment.failed", "build.failed", "deployment.cancelled")
 
 
@@ -76,7 +76,10 @@ def main() -> None:
     deadline = time.time() + 1800
     while pending and time.time() < deadline:
         for name, (env_id, branch) in list(pending.items()):
-            latest = max(cloud("deployment:list", env_id), key=lambda d: d.get("createdAt") or d.get("startedAt") or "")
+            deployments = cloud("deployment:list", env_id)
+            if not deployments:
+                continue  # a new environment: its first deployment hasn't been created yet
+            latest = max(deployments, key=lambda d: d.get("createdAt") or d.get("startedAt") or "")
             if not heads[branch].startswith(latest.get("commitHash") or "-"):
                 continue  # the push hasn't started a deployment yet
             if latest["status"] in FINISHED:
